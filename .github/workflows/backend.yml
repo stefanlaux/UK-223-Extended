@@ -13,8 +13,8 @@ jobs:
 
       - name: Build backend
         working-directory: "./backend"
-        run: gradle build
+        run: ./gradlew build
 
       - name: Test backend
         working-directory: "./backend"
-        run: gradle test
+        run: ./gradlew test
