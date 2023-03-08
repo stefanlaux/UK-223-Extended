@@ -1,4 +1,4 @@
-name: Pipeline Testing
+name: backend
 on:
   push:
     branches:
@@ -8,21 +8,19 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Set up JDK 18
+        working-directory: "./backend"
         uses: actions/setup-java@v3
         with:
           java-version: "18"
           distribution: "temurin"
-      - name: Build backend
+      - name: Validate Gradle wrapper
         working-directory: "./backend"
-        with:
-          java-version: '18'
-        run: ./gradlew build
-
-      - name: Test backend
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Build with Gradle
         working-directory: "./backend"
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          java-version: '18'
-        run: ./gradlew test
+          arguments: build
