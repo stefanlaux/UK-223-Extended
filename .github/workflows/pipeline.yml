@@ -1,12 +1,13 @@
 name: Pipeline
-
 on:
   push:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
-  say-hello:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello World
-        run: echo "Hello World!"
+      - name: Say Hello with Secret
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: echo "Hello World! My secret is: $MY_SECRET"
