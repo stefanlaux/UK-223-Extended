@@ -6,7 +6,7 @@ services:
     cpus: 0.1
 
     restart: unless-stopped
-    image: 223-frontend
+    image: stefanlaux/223-frontend
     container_name: frontend
     depends_on:
       - backend
@@ -17,7 +17,7 @@ services:
     cpus: 0.2
 
     restart: unless-stopped
-    image: #todo
+    image: stefanlaux/223-backend
     container_name: backend
     ports:
       - 8080:8080

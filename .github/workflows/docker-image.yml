@@ -13,8 +13,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Frontend Docker image
-      run: docker build --tag 223-frontend ./frontend
-    - name: Build the Backend Docker image
-      run: docker build --tag 223-backend ./backend
+      - uses: actions/checkout@v3
+      - name: Build and push the Frontend Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker build --tag 223-frontend ./frontend
+          docker tag 223-frontend $DOCKER_USERNAME/223-frontend
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push $DOCKER_USERNAME/223-frontend
+      - name: Build and push the Backend Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker build --tag 223-backend ./backend
+          docker tag 223-backend $DOCKER_USERNAME/223-backend
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push $DOCKER_USERNAME/223-backend
