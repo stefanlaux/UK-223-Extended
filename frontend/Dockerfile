@@ -10,4 +10,4 @@ COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build .
 COPY --from=build /app/.env.production .
 RUN apk add --no-cache bash
-CMD ["/bin/bash", "- c", "nginx -g  \" daemon off;\"" ]
+CMD ["/bin/bash", "-c", "nginx -g \"daemon off;\""]
