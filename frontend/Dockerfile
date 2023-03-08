@@ -2,7 +2,7 @@ FROM node:16-alpine as build
 WORKDIR /app
 COPY . .
 RUN yarn install
-RUN react-scripts build
+RUN yarn run build
 FROM nginx:alpine
 EXPOSE 443 80
 WORKDIR /usr/share/nginx/html
