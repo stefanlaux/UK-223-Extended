@@ -15,3 +15,11 @@ jobs:
         run: echo "Hello World! My secret is $MY_SECRET"
       - name: Run Script
         run: bash run.sh
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh  -action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: bash run.sh
