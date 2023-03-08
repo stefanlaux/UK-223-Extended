@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build backend
-        run: sudo ./backend/gradlew build
+        run: sudo ./backend/gradlew "build"
 
       - name: Test backend
-        run: sudo ./backend/gradlew test
+        run: sudo ./backend/gradlew "test"
