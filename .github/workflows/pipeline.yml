@@ -10,4 +10,4 @@ jobs:
       - name: Say Hello with Secret
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: echo "Hello World! My secret is: $MY_SECRET"
+        run: echo "Hello World! My secret is $MY_SECRET"
