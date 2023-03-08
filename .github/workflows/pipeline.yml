@@ -1,4 +1,4 @@
-name: Pipeline
+name: Pipeline Testing
 on:
   push:
     branches:
@@ -9,13 +9,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Say Hello with Secret
+      - name: Print Secret
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: echo "Hello World! My secret is $MY_SECRET"
-      - name: Run Script
+        run: echo "My secret is $MY_SECRET"
+      - name: Run Script from repo
         run: bash run.sh
-      - name: executing remote ssh commands using password
+      - name: Run Script from ssh
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
