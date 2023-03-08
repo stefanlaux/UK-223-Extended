@@ -1,8 +1,8 @@
 FROM node:16-alpine as build
 WORKDIR /app
 COPY . .
-RUN yarn install --network-timeout §
-RUN yarn run build
+RUN yarn install
+RUN react-scripts build
 FROM nginx:alpine
 EXPOSE 443 80
 WORKDIR /usr/share/nginx/html
