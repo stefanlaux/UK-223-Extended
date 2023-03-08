@@ -13,12 +13,8 @@ jobs:
 
       - name: Build backend
         working-directory: "./backend"
-        with:
-          java-version: '18'
         run: ./gradlew build
 
       - name: Test backend
         working-directory: "./backend"
-        with:
-          java-version: '18'
         run: ./gradlew test
