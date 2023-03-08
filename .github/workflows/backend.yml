@@ -11,13 +11,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and Test backend
-        uses: docker://gradle:6.9.2-jdk11
-        working-directory: ./backend
-        with:
-          entrypoint: sh
-          args:
-            - -c
-            - |
-              gradle build
-              gradle test
+      - name: Build backend
+        run: |
+          docker run --rm -v $PWD/backend:/app -w /app gradle:6.9.2-jdk11 gradle build
+
+      - name: Test backend
+        run: |
+          docker run --rm -v $PWD/backend:/app -w /app gradle:6.9.2-jdk11 gradle test
