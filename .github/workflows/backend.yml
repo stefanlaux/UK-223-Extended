@@ -1,4 +1,4 @@
-name: Pipeline Testing
+name: Backendradle wrapper --gradle-version 8.0.2
 on:
   push:
     branches:

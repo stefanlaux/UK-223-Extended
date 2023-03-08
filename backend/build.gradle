@@ -6,8 +6,8 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-java.sourceCompatibility = JavaVersion.VERSION_18
-java.targetCompatibility = JavaVersion.VERSION_18
+java.sourceCompatibility = "18"
+java.targetCompatibility = "18"
 
 configurations {
 	compileOnly {
