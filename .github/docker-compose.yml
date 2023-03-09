@@ -20,7 +20,7 @@ services:
     image: stefanlaux/223-backend
     container_name: backend
     ports:
-      - 8080:8094
+      - 8080
     depends_on:
       - db
   db:
