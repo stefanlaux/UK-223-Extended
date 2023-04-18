@@ -136,7 +136,7 @@ export const ActiveUserContextProvider = ({
    * @param password
    */
   const login = async (email: string, password: string) => {
-    await api.post("user/login", { email, password }).then((response: any) => {
+    await api.post("api/user/login", { email, password }).then((response: any) => {
       console.log(response.headers.authorization);
       localStorage.setItem(
         TOKEN_LOCAL_STORAGE_KEY,
