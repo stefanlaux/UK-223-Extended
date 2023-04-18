@@ -42,7 +42,7 @@ public class WebSecurityConfig {
         requests -> requests.antMatchers(HttpMethod.POST, "/api/user/login", "/api/user/register").permitAll()
                 .antMatchers(HttpMethod.GET, "/v3/api-docs","/v3/api-docs/swagger-config","/swagger-ui/*","/docs/*/*","/docs/*").permitAll()
                             .anyRequest().authenticated())
-               .addFilterAfter(new JWTAuthenticationFilter(new AntPathRequestMatcher("/user/login", "POST"),
+               .addFilterAfter(new JWTAuthenticationFilter(new AntPathRequestMatcher("/api/user/login", "POST"),
                    authenticationManager(), jwtProperties), UsernamePasswordAuthenticationFilter.class)
                .addFilterAfter(new JWTAuthorizationFilter(userService, jwtProperties),
                    UsernamePasswordAuthenticationFilter.class)
